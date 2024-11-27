@@ -66,28 +66,35 @@ CREATE TABLE fictional_characters
 The following sample data has been inserted into each table:
 
 - famous_people
+
 Example: "Nana Kwame Bediako" (Entrepreneur), "Sarkodie" (Musician), "Denzel Washington" (Actor), etc.
 
 - movies
+
 Example: "The Great Debators" (Actor: Denzel Washington), "Man on Fire" (Actor: Denzel Washington), etc.
 
 - songs
+
 Example: "Otan" (Musician: Sarkodie), "Revenge of the Spartans" (Musician: Sarkodie), etc.
 
 - books
+
 Example: "God is Able" (Author: Priscilla Shirer), "The Prince Warriors" (Author: Priscilla Shirer), etc.
 
 - fictional_characters
+
 Example: "Jon Snow" (Book: Game of Thrones), "Tintin" (Book: The Adventures of Tintin), etc.
 
 ## Example Queries
 - Which fictional characters are found in Game of Thrones?
+
 sql code:
 SELECT character_name
 FROM fictional_characters
 WHERE appearance = "Game of Thrones";
 
 - What movies are the actors in?
+
 sql code:
 SELECT fp.name AS actor, m.title AS movie
 FROM famous_people fp
@@ -95,6 +102,7 @@ JOIN movies m ON fp.id = m.actor_id
 WHERE fp.profession = "Actor";
 
 - What songs did Sarkodie write?
+
 sql code: 
 SELECT fp.name AS musician, s.title AS song
 FROM famous_people fp
@@ -102,6 +110,7 @@ JOIN songs s ON fp.id = s.musician_id
 WHERE fp.name = "Sarkodie";
 
 - What books did Priscilla Shirer write?
+
 sql code:
 SELECT fp.name AS author, b.title AS book
 FROM famous_people fp
