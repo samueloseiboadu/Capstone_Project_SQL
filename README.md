@@ -17,7 +17,7 @@ CREATE DATABASE celebs;
 USE celebs;
 
 ### 3. Table Definitions
-famous_people
+- famous_people
 Stores basic details about famous people.
 
 CREATE TABLE famous_people 
@@ -25,7 +25,7 @@ CREATE TABLE famous_people
     name VARCHAR(100) NOT NULL,
     profession VARCHAR(50) NOT NULL);
 
-movies
+- movies
 Links actors to the movies they appear in.
 
 CREATE TABLE movies 
@@ -34,7 +34,7 @@ CREATE TABLE movies
     actor_id INT,
     FOREIGN KEY (actor_id) REFERENCES famous_people(id));
 
-songs
+- songs
 Links musicians to the songs they have written.
 
 CREATE TABLE songs 
@@ -43,7 +43,7 @@ CREATE TABLE songs
     musician_id INT,
     FOREIGN KEY (musician_id) REFERENCES famous_people(id));
 
-books
+- books
 Links authors to the books they have written.
 
 CREATE TABLE books 
@@ -52,7 +52,7 @@ CREATE TABLE books
     author_id INT,
     FOREIGN KEY (author_id) REFERENCES famous_people(id));
 
-fictional_characters
+- fictional_characters
 Links fictional characters to the books in which they appear.
 
 CREATE TABLE fictional_characters 
@@ -65,43 +65,43 @@ CREATE TABLE fictional_characters
 ## Data Insertion
 The following sample data has been inserted into each table:
 
-famous_people
+- famous_people
 Example: "Nana Kwame Bediako" (Entrepreneur), "Sarkodie" (Musician), "Denzel Washington" (Actor), etc.
 
-movies
+- movies
 Example: "The Great Debators" (Actor: Denzel Washington), "Man on Fire" (Actor: Denzel Washington), etc.
 
-songs
+- songs
 Example: "Otan" (Musician: Sarkodie), "Revenge of the Spartans" (Musician: Sarkodie), etc.
 
-books
+- books
 Example: "God is Able" (Author: Priscilla Shirer), "The Prince Warriors" (Author: Priscilla Shirer), etc.
 
-fictional_characters
+- fictional_characters
 Example: "Jon Snow" (Book: Game of Thrones), "Tintin" (Book: The Adventures of Tintin), etc.
 
 ## Example Queries
-1. Which fictional characters are found in Game of Thrones?
+- Which fictional characters are found in Game of Thrones?
 sql code:
 SELECT character_name
 FROM fictional_characters
 WHERE appearance = "Game of Thrones";
 
-3. What movies are the actors in?
+- What movies are the actors in?
 sql code:
 SELECT fp.name AS actor, m.title AS movie
 FROM famous_people fp
 JOIN movies m ON fp.id = m.actor_id
 WHERE fp.profession = "Actor";
 
-4. What songs did Sarkodie write?
+- What songs did Sarkodie write?
 sql code: 
 SELECT fp.name AS musician, s.title AS song
 FROM famous_people fp
 JOIN songs s ON fp.id = s.musician_id
 WHERE fp.name = "Sarkodie";
 
-5. What books did Priscilla Shirer write?
+- What books did Priscilla Shirer write?
 sql code:
 SELECT fp.name AS author, b.title AS book
 FROM famous_people fp
