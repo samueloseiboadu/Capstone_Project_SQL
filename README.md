@@ -4,115 +4,83 @@ In this project, a relational database has been created to store and query data 
 
 ## Database: celebs
 The project uses a database called celebs, which contains the following tables:
-- famous_people: A table storing basic information about famous people, including their names and professions.
-- movies: A table linking actors to the movies they’ve been in.
-- songs: A table linking musicians to the songs they’ve written.
-- books: A table linking authors to the books they’ve written.
-- fictional_characters: A table linking characters to books they appear in.
+* famous_people: A table storing basic information about famous people, including their names and professions.
+  
+* movies: A table linking actors to the movies they’ve been in.
+  
+* songs: A table linking musicians to the songs they’ve written.
+  
+* books: A table linking authors to the books they’ve written.
+  
+* fictional_characters: A table linking characters to books they appear in.
 
 ## SQL Schema
 ### 1. Create Database
+![sql1](https://github.com/user-attachments/assets/a0dd871d-da38-426d-bdea-052efe2ba24a)
    
-CREATE DATABASE celebs;
-USE celebs;
 
 ### 3. Table Definitions
-- famous_people
+* famous_people
 Stores basic details about famous people.
 
-CREATE TABLE famous_people 
-    (id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    profession VARCHAR(50) NOT NULL);
+![sql1](https://github.com/user-attachments/assets/560e9844-dc81-41b0-aa00-86401dd26e73)
 
-- movies
+* movies
 Links actors to the movies they appear in.
 
-CREATE TABLE movies 
-    (id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,
-    actor_id INT,
-    FOREIGN KEY (actor_id) REFERENCES famous_people(id));
+![sql3](https://github.com/user-attachments/assets/3236f417-d7bd-4aec-990a-fae17247b73b)
 
-- songs
+* songs
 Links musicians to the songs they have written.
 
-CREATE TABLE songs 
-    (id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,
-    musician_id INT,
-    FOREIGN KEY (musician_id) REFERENCES famous_people(id));
+![sql4](https://github.com/user-attachments/assets/0cbadc15-5359-43d2-b26a-876dc633ed02)
 
-- books
+* books
 Links authors to the books they have written.
 
-CREATE TABLE books 
-    (id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,
-    author_id INT,
-    FOREIGN KEY (author_id) REFERENCES famous_people(id));
+![sql5](https://github.com/user-attachments/assets/efea9200-fc9d-4dac-8804-67326b6495df)
 
-- fictional_characters
+* fictional_characters
 Links fictional characters to the books in which they appear.
 
-CREATE TABLE fictional_characters 
-    (id INT PRIMARY KEY AUTO_INCREMENT,
-    character_name VARCHAR(100) NOT NULL,
-    appearance VARCHAR(255),
-    book_id INT,
-    FOREIGN KEY (book_id) REFERENCES books(id));
+![sql6](https://github.com/user-attachments/assets/d9224e3c-8c75-4c27-bdaf-bad21887944b)
 
 ## Data Insertion
 The following sample data has been inserted into each table:
 
-- famous_people
+* famous_people
 
-Example: "Nana Kwame Bediako" (Entrepreneur), "Sarkodie" (Musician), "Denzel Washington" (Actor), etc.
+![sql7](https://github.com/user-attachments/assets/dc493833-12ee-4b7a-bea5-243524c257c6)
 
-- movies
+* movies
 
-Example: "The Great Debators" (Actor: Denzel Washington), "Man on Fire" (Actor: Denzel Washington), etc.
+![sql8](https://github.com/user-attachments/assets/f76b9211-b33b-471d-9ee3-3fdd1c4bda06)
 
-- songs
+* songs
 
-Example: "Otan" (Musician: Sarkodie), "Revenge of the Spartans" (Musician: Sarkodie), etc.
+![sql9](https://github.com/user-attachments/assets/c4eb8dc2-a51c-4b1b-9e5c-8db7cb48ee9c)
 
-- books
+* books
 
-Example: "God is Able" (Author: Priscilla Shirer), "The Prince Warriors" (Author: Priscilla Shirer), etc.
+![sql10](https://github.com/user-attachments/assets/277a92ee-f0dd-464f-a4fa-fd7865106099)
 
-- fictional_characters
+* fictional_characters
 
-Example: "Jon Snow" (Book: Game of Thrones), "Tintin" (Book: The Adventures of Tintin), etc.
+![sql1](https://github.com/user-attachments/assets/0c677f72-07d9-4b6e-9eee-676a8cf9b6f1)
 
 ## Example Queries
-- Which fictional characters are found in Game of Thrones?
+* Which fictional characters are found in Game of Thrones?
 
-sql code:
-SELECT character_name
-FROM fictional_characters
-WHERE appearance = "Game of Thrones";
+![sql12](https://github.com/user-attachments/assets/7c69bbd7-2dbf-46e0-bdcb-7b489ca7257b)
 
-- What movies are the actors in?
+* What movies are the actors in?
 
-sql code:
-SELECT fp.name AS actor, m.title AS movie
-FROM famous_people fp
-JOIN movies m ON fp.id = m.actor_id
-WHERE fp.profession = "Actor";
+![sql13](https://github.com/user-attachments/assets/176cd914-2ec9-4c2a-b7b2-31b8113b5f4b)
 
-- What songs did Sarkodie write?
+* What songs did Sarkodie write?
 
-sql code: 
-SELECT fp.name AS musician, s.title AS song
-FROM famous_people fp
-JOIN songs s ON fp.id = s.musician_id
-WHERE fp.name = "Sarkodie";
+![sql14](https://github.com/user-attachments/assets/01ab6566-088c-4b0d-832e-bdff9ced34f2)
 
 - What books did Priscilla Shirer write?
 
-sql code:
-SELECT fp.name AS author, b.title AS book
-FROM famous_people fp
-JOIN books b ON fp.id = b.author_id
-WHERE fp.name = "Priscilla Shirer";
+![sql15](https://github.com/user-attachments/assets/9e71c4c3-2a16-48e9-a666-00388033db7c)
